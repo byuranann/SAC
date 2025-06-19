@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seed Analysis Calculator - TSW & SSS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 Seed Analysis Calculator</h1>
+            <p></p>
+        </div>
+
+        <div class="formula">
+            <div style="margin-bottom: 15px;">
+                <strong>TSW Formula:</strong> (Weight of Seeds ÷ Number of Seeds) × 1000
+            </div>
+            <div>
+                <strong>SSS Formula:</strong> (TSW ÷ 1000) × Number of Seeds
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('tsw')">TSW Calculator</button>
+            <button class="tab-btn" onclick="showTab('sss')">SSS Calculator</button>
+        </div>
+
+        <div id="tswTab" class="tab-content active">
+            <form id="tswForm">
+                <div class="input-group">
+                    <label for="weight">Weight of Seeds (grams):</label>
+                    <input type="number" id="weight" step="0.001" min="0" placeholder="Enter weight in grams" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="count">Number of Seeds:</label>
+                    <input type="number" id="count" min="1" placeholder="Enter number of seeds" required>
+                </div>
+
+                <button type="submit" class="calculate-btn">Calculate TSW</button>
+            </form>
+
+            <div id="result" class="result">
+                <div>Thousand Seed Weight (TSW)</div>
+                <div class="result-value" id="tswValue">0.00</div>
+                <div class="unit">grams per 1000 seeds</div>
+            </div>
+        </div>
+
+        <div id="sssTab" class="tab-content">
+            <form id="sssForm">
+                <div class="input-group">
+                    <label for="tswInput">Known TSW (grams per 1000 seeds):</label>
+                    <input type="number" id="tswInput" step="0.001" min="0" placeholder="Enter TSW value" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="seedCount">Number of Seeds in Subsample:</label>
+                    <input type="number" id="seedCount" min="1" placeholder="Enter number of seeds" required>
+                </div>
+
+                <button type="submit" class="calculate-btn">Calculate Subsample Size</button>
+            </form>
+
+            <div id="sssResult" class="result">
+                <div>Subsample Size (SSS)</div>
+                <div class="result-value" id="sssValue">0.00</div>
+                <div class="unit">grams</div>
+            </div>
+
+            <div class="sss-info" style="background: rgba(102, 126, 234, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px; font-size: 0.95em;">
+                <strong>💡 Use Case:</strong> Calculate the expected weight of a specific number of seeds based on known TSW. 
+                Useful for preparing uniform samples for testing or planting.
+            </div>
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div class="history">
+            <h3>📊 Calculation History</h3>
+            <div id="historyList"></div>
+            <button id="clearHistory" class="clear-btn" style="margin-top: 10px;">Clear History</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
