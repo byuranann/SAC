@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seed Analysis Calculator - TSW & SSS</title>
+    <title>TSW Calculator - Thousand Seed Weight</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>🌱 Seed Analysis Calculator</h1>
-            <p></p>
+            <p>Calculate Thousand Seed Weight (TSW) and Subsample Size (SSS) for agricultural analysis</p>
         </div>
 
         <div class="formula">
@@ -57,22 +57,43 @@
                 </div>
 
                 <div class="input-group">
+                    <label for="totalWeight">Total Weight of Seeds (grams):</label>
+                    <input type="number" id="totalWeight" step="0.001" min="0" placeholder="Enter total weight available" required>
+                </div>
+
+                <div class="input-group">
                     <label for="seedCount">Number of Seeds in Subsample:</label>
                     <input type="number" id="seedCount" min="1" placeholder="Enter number of seeds" required>
                 </div>
 
-                <button type="submit" class="calculate-btn">Calculate Subsample Size</button>
+                <button type="submit" class="calculate-btn">Calculate Subsample Analysis</button>
             </form>
 
             <div id="sssResult" class="result">
-                <div>Subsample Size (SSS)</div>
-                <div class="result-value" id="sssValue">0.00</div>
-                <div class="unit">grams</div>
+                <div>Subsample Analysis Results</div>
+                <div style="display: flex; justify-content: space-between; margin: 15px 0;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 0.9em; opacity: 0.8;">Subsample Weight</div>
+                        <div class="result-value" id="sssValue" style="font-size: 1.5em;">0.00</div>
+                        <div class="unit" style="font-size: 0.8em;">grams</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 0.9em; opacity: 0.8;">Total Subsamples</div>
+                        <div class="result-value" id="totalSubsamples" style="font-size: 1.5em;">0</div>
+                        <div class="unit" style="font-size: 0.8em;">complete subsamples</div>
+                    </div>
+                </div>
+                <div id="leftoverInfo" style="text-align: center; margin-top: 15px; padding: 10px; background: rgba(255, 193, 7, 0.1); border-radius: 8px; font-size: 0.95em;">
+                    <div style="color: #856404; font-weight: 600;">Leftover: <span id="leftoverWeight">0.00</span> grams</div>
+                    <div style="color: #856404; opacity: 0.8; font-size: 0.9em; margin-top: 5px;">
+                        (<span id="leftoverSeeds">0</span> seeds equivalent)
+                    </div>
+                </div>
             </div>
 
             <div class="sss-info" style="background: rgba(102, 126, 234, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px; font-size: 0.95em;">
-                <strong>💡 Use Case:</strong> Calculate the expected weight of a specific number of seeds based on known TSW. 
-                Useful for preparing uniform samples for testing or planting.
+                <strong>💡 Use Case:</strong> Calculate subsample weight and determine how many subsamples you can create from your total seed weight. 
+                Useful for dividing seed lots into uniform testing portions.
             </div>
         </div>
 
